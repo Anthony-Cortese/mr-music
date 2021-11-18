@@ -53,13 +53,13 @@ export const reducer = (state = initialState, action) => {
         ...state,
         fetching: false,
         fetched: true,
-        artists: action.payload.data.artists,
+        artists: action.payload,
       };
     case FETCH_FAIL_ARTIST:
       return {
         ...state,
         fetching: false,
-        error: action.payload,
+        error: "",
       };
 
     case FETCH_START_ALBUM:
@@ -72,12 +72,12 @@ export const reducer = (state = initialState, action) => {
         ...state,
         fetching: false,
         fetched: true,
-        albums: action.payload.data.albums,
+        albums: action.payload,
       };
     case FETCH_FAIL_ALBUM:
       return {
         ...state,
-        error: action.payload,
+        error: "",
         isFetching: false,
       };
     default:

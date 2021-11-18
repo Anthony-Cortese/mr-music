@@ -7,12 +7,10 @@ function Artist(props) {
     <section id="artists">
       <div className="banner-div">
         <img className="banner-img" alt="banner">
-          {art.strArtistBanner}
+          {/* {art.strArtistBanner} */}
         </img>
       </div>
-      <div className="artists-info">
-        <h3>{art.strArtist}</h3>
-      </div>
+      <div className="artists-info">{/* <h3>{art.strArtist}</h3> */}</div>
     </section>
   );
 }

@@ -8,7 +8,7 @@ export const FETCH_SUCCESS_ALBUM = "FETCH_SUCCESS_ALBUM";
 export const FETCH_FAIL_ALBUM = "FETCH_FAIL_ALBUM";
 
 export const getArtistDetails = (textInput) => (dispatch) => {
-  dispatch(fetchStart());
+  dispatch({ type: FETCH_START_ARTIST });
 
   const options = {
     method: "GET",
@@ -23,15 +23,15 @@ export const getArtistDetails = (textInput) => (dispatch) => {
   axios
     .request(options)
     .then((response) => {
-      dispatch(fetchSuccess(response.data));
+      dispatch({ type: FETCH_START_ARTIST, payload: response.data });
     })
     .catch(function (error) {
-      dispatch(fetchFail(error));
+      dispatch({ type: FETCH_FAIL_ARTIST, payload: error });
     });
 };
 
 export const getAlbumDetails = (textInput) => (dispatch) => {
-  dispatch(fetchStartAlbum());
+  dispatch({ type: FETCH_START_ALBUM });
   const options1 = {
     method: "GET",
     url: "https://theaudiodb.p.rapidapi.com/searchalbum.php",
@@ -44,32 +44,32 @@ export const getAlbumDetails = (textInput) => (dispatch) => {
   axios
     .request(options1)
     .then(function (response) {
-      dispatch(fetchSuccessAlbum(response.data));
+      dispatch({ type: FETCH_SUCCESS_ALBUM, payload: response.data });
     })
     .catch(function (error) {
-      dispatch(fetchFailAlbum(error));
+      dispatch({ type: FETCH_FAIL_ALBUM, payload: error });
     });
 };
-export const fetchStart = () => {
-  return { type: FETCH_START_ARTIST };
-};
+// export const fetchStart = () => {
+//   return { type: FETCH_START_ARTIST };
+// };
 
-export const fetchSuccess = (artists) => {
-  return { type: FETCH_SUCCESS_ARTIST, payload: artists };
-};
+// export const fetchSuccess = (artists) => {
+//   return { type: FETCH_SUCCESS_ARTIST, payload: artists };
+// };
 
-export const fetchFail = (error) => {
-  return { type: FETCH_FAIL_ARTIST, payload: error };
-};
+// export const fetchFail = (error) => {
+//   return { type: FETCH_FAIL_ARTIST, payload: error };
+// };
 
-export const fetchStartAlbum = () => {
-  return { type: FETCH_START_ALBUM };
-};
+// export const fetchStartAlbum = () => {
+//   return { type: FETCH_START_ALBUM };
+// };
 
-export const fetchSuccessAlbum = (albums) => {
-  return { type: FETCH_SUCCESS_ALBUM, payload: albums };
-};
+// export const fetchSuccessAlbum = (albums) => {
+//   return { type: FETCH_SUCCESS_ALBUM, payload: albums };
+// };
 
-export const fetchFailAlbum = (error) => {
-  return { type: FETCH_FAIL_ALBUM, payload: error };
-};
+// export const fetchFailAlbum = (error) => {
+//   return { type: FETCH_FAIL_ALBUM, payload: error };
+// };
